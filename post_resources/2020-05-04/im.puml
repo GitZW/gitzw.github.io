@@ -1,18 +1,11 @@
-'@startuml
-'actor user1
-'user1 -> im_server : ①给user2发送 "你好" 消息
-'im_server -> user1 : ②收到
-'actor user2
-'im_server -> user2: user1给您发送 "你好" 消息
-'user2 -> im_server:收到
-'
-'@enduml
-
-
 @startuml
 actor user1
 user1 -> im_server : ①给user2发送 "你好" 消息
+im_server -> user1 : ②收到(ack)
 actor user2
-im_server -> user2: user1给您发送 "你好" 消息
+im_server -> user2: ③user1给您发送 "你好" 消息
+user2 -> im_server:④收到(ack)
+im_server -> user2:⑤ack，通知user2,im_server 已经收到user2收到消息的ack
+im_server -> user1:⑥通知user1，user2已经收到消息
 
 @enduml
