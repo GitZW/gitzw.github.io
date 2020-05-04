@@ -1,7 +1,18 @@
-@startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+'@startuml
+'actor user1
+'user1 -> im_server : ①给user2发送 "你好" 消息
+'im_server -> user1 : ②收到
+'actor user2
+'im_server -> user2: user1给您发送 "你好" 消息
+'user2 -> im_server:收到
+'
+'@enduml
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+
+@startuml
+actor user1
+user1 -> im_server : ①给user2发送 "你好" 消息
+actor user2
+im_server -> user2: user1给您发送 "你好" 消息
+
 @enduml
