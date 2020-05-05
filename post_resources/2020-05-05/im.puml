@@ -1,0 +1,12 @@
+@startuml
+autonumber
+actor user1
+user1 -> im_server : msg1（seq=10）
+user1 -> im_server : msg2（seq=20）
+user1 -> im_server : msg3（seq=30）
+actor user2
+im_server -> user2 : msg3 (seq=30)
+im_server -> user2 : msg2 (seq=20)
+im_server -> user2 : msg1 (seq =10)
+
+@enduml
