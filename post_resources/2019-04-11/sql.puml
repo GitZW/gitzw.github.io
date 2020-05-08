@@ -1,0 +1,39 @@
+@startuml
+:"客户端";
+partition server层 {
+:"连接器";
+    note right
+         管理连接，权限验证
+    end note
+
+if (查询缓存) then (yes)
+    :返回结果;
+    stop
+else (no)
+    :分析器;
+    note right
+         词法，语法分析
+    end note
+endif
+
+    :优化器;
+     note right
+         生成执行计划，选择索引等
+    end note
+
+    :执行器;
+    note right
+        api接口调用存储引擎，返回结果
+    end note
+}
+partition 存储引擎层 {
+
+    :存储引擎;
+    note right
+         插件式，InnoDB,myisam等，实现读写数据接口
+    end note
+    :数据;
+    stop
+
+}
+@enduml
