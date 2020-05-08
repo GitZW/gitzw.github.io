@@ -1,7 +1,7 @@
 @startuml
-:"客户端";
+:客户端;
 partition server层 {
-:"连接器";
+:连接器;
     note right
          管理连接，权限验证
     end note
