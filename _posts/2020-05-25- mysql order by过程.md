@@ -45,7 +45,7 @@ select city,name,age from t where city='杭州' order by name limit 1000 ;
 
 # rowid排序
 
-如果 MySQL 认为排序的单行长度太大会怎么做呢？ 也就是 [全字段排序]() 中步骤1 `name、city、age` 太长。
+如果 MySQL 认为排序的单行长度太大会怎么做呢？ 也就是 [全字段排序](#全字段排序) 中步骤1 `name、city、age` 太长。
  
 ***max_length_for_sort_data***，是 MySQL 中专门控制用于排序的行数据的长度的一个参数。它的意思是，如果单行的长度超过这个值，MySQL 就认为单行太大，要换一个算法。
  
@@ -59,7 +59,7 @@ select city,name,age from t where city='杭州' order by name limit 1000 ;
 7. 遍历排序结果，取前 1000 行，并按照 id 的值回到原表中取出 city、name 和 age 三个字段返回给客户端
 
 
-相比 [全字段排序]() ,rowid 在步骤7多一次回表的过程
+相比 [全字段排序](#全字段排序) ,rowid 在步骤7多一次回表的过程
 
 
 
