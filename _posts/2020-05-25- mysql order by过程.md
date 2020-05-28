@@ -66,6 +66,9 @@ select city,name,age from t where city='杭州' order by name limit 1000 ;
 并不是所有的 order by 语句，都需要排序操作的。从上面分析的执行过程，我们可以看到，MySQL 之所以需要生成临时表，并且在临时表上做排序操作，其原因是原来的数据都是无序的
 
 
+# order by rand()
+ `order by rand()` 效率低下，因为需要全表扫描，给每行记录一个随机值，再根据随机值排序，返回。order by rand() 使用了内存临时表，内存临时表排序的时候使用了 rowid 排序方法。建议在应用程序上随机好记录的id，再根据id去MySQL 查询记录
+
 
 参考 丁奇 ·《MySQL实战45讲》
     
